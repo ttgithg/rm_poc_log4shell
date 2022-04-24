@@ -37,11 +37,11 @@ log "Starting PROVISIONING tasks on ${HOSTNAME}"
 log ""
 
 main() {
-    # local wait="5"
+    local wait="5"
 
     run_script1_baseconfiguration
     run_script2_labconfiguration
-    # reboot_forced "${wait}"
+    reboot_forced "${wait}"
 }
 
 #------------------------------------------------------------------------------

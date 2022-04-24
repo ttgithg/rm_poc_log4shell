@@ -142,7 +142,7 @@ dockerlab_packages_docker_install() {
         else
             log "    gnupg already installed"
         fi
-        log "     -> gpg --version | grep GnuPG"
+        log "     -> $(gpg --version | grep 'GnuPG')"
         log " -> allowing management from where software is installed"
         install_package software-properties-common >/dev/null 2>&1
         log " -> adding docker's GPG key"
