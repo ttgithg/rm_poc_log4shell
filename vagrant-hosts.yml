@@ -1,0 +1,16 @@
+# vagrant_hosts.yml
+#
+# List of hosts to be created by Vagrant. For more information about the
+# possible settings, see the documentation at
+# <https://github.com/bertvv/ansible-skeleton>
+---
+- name: kalilab
+  box: kalilinux/rolling
+  memory: 4096
+  cpus: 2
+  ip: 172.16.6.6
+  netmask: 255.255.255.0
+  mac: 080027000666
+  # forwarded_ports:
+  #   - host: 2266
+  #     guest: 22
