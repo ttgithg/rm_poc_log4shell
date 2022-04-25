@@ -263,7 +263,7 @@ vulnerable_jdk2gitrepodir() {
         log "Copying vulnerable jdk: ${jdk} to ${destdir}"
         cp -r "${jdkPath}" "${destdir}"
         if [ -f "${destdir}/${jdk}" ]; then
-            tar -xf "${destdir}/${jdk}"
+            tar -xf "${destdir}/${jdk}" "${destdir}"
         fi
     else
         log "vulnerable jdk: ${jdk} already in ${destdir}"
