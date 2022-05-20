@@ -75,9 +75,7 @@ reboot_forced() {
 
     log "reboot in ${wait} seconds"
     sleep "${wait}"
-    reboot
-    #reboot friendly
-    #echo 'Reboot? (y/n)' && read x && [[ "$x" == "y" ]] && /sbin/reboot;
+    systemctl reboot
 }
 
 #------------------------------------------------------------------------------
