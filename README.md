@@ -14,8 +14,6 @@ rm_poc_log4shell
 
 ## VM environment
 
-automated using ansible with a [vagrant skeleton](https://github.com/bertvv/ansible-skeleton) made by bertvv
-
 1. clone repo: <https://github.com/ttgithg/rm_poc_log4shell>
 
     ```bash
@@ -218,3 +216,9 @@ root@deblab:/usr/local/tomcat# sed -i 's/Login/HACKED/g' webapps/ROOT/index.jsp
 
 # Refresh browser ;-)
 ```
+
+### References
+
+- automated environment using ansible with a [vagrant skeleton](https://github.com/bertvv/ansible-skeleton) built by bertvv
+- log4j CVE-2021-44228 poc [githubRepo](https://github.com/kozmer/log4j-shell-poc) built by kozer
+- log4j CVE-2021-44228 testing tools [URL](https://log4shell.tools/) and [gitRepo](https://github.com/alexbakker/log4shell-tools) built by Alexander Bakker
