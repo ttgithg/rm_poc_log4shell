@@ -14,6 +14,8 @@ rm_poc_log4shell
 
 ## VM environment
 
+automated using ansible with a [vagrant skeleton](https://github.com/bertvv/ansible-skeleton) made by bertvv
+
 1. clone repo: <https://github.com/ttgithg/rm_poc_log4shell>
 
     ```bash
