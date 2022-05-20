@@ -4,13 +4,29 @@
 # possible settings, see the documentation at
 # <https://github.com/bertvv/ansible-skeleton>
 ---
-- name: kalilab
-  box: kalilinux/rolling
+# Important note: 
+# Problems with kalilinux/running v2022.2.0 release: vagrant up wil not execute in a fully automatic way anymore
+# USE deblab with either the boxmatic/debian-11-mate or debian/bullseye64 box
+# As you can see is it kept in comments and any suggestions or fixes will be taken in consideration and appreciated
+# - name: kalilab
+#   box: kalilinux/rolling/v2022.1.0
+#   memory: 4096
+#   cpus: 2
+#   ip: 172.16.6.6
+#   netmask: 255.255.255.0
+#   mac: 080027000666
+#   # forwarded_ports:
+#   #   - host: 2266
+#   #     guest: 22
+
+#box debian/bullseye64 is also a tested and valid option
+- name: deblab
+  box: boxomatic/debian-11-mate
   memory: 4096
   cpus: 2
-  ip: 172.16.6.6
+  ip: 172.16.6.11
   netmask: 255.255.255.0
-  mac: 080027000666
+  mac: 080027000667
   # forwarded_ports:
-  #   - host: 2266
+  #   - host: 2211
   #     guest: 22
