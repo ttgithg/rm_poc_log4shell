@@ -62,6 +62,7 @@ main_2() {
     clone_gitrepo2destdir "${gitrepo}" "${destdir}"
     vulnerable_jdk2gitrepodir
     dockerlab_pip_requirements_install "${pip_requirements[*]}"
+    packages_netcat_install
     # reboot_forced "${wait}"
 }
 
@@ -288,6 +289,21 @@ dockerlab_pip_requirements_install() {
         fi
         log " -> ${req} version $(python3 -m pip show ${req} | grep -oP 'Version: \K.*')"
     done
+}
+
+#------------------------------------------------------------------------------
+# NetCat
+#------------------------------------------------------------------------------
+
+packages_netcat_install() {
+    if ! nc -h >/dev/null 2>&1; then
+        log "Installing packages: netcat"
+        install_package netcat
+    else
+        log "netcat already installed"
+    fi
+    log " -> $(dpkg --list | grep netcat | awk '{$1=""; print $0}' | grep -oP 'netcat .{0,8}')"
+    log " -> $(dpkg --list | grep netcat | awk '{$1=""; print $0}' | grep -oP 'netcat-openbsd.{0,8}')"
 }
 
 #------------------------------------------------------------------------------
