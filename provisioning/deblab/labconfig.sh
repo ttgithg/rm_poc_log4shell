@@ -298,7 +298,7 @@ dockerlab_pip_requirements_install() {
 packages_netcat_install() {
     if ! nc -h >/dev/null 2>&1; then
         log "Installing packages: netcat"
-        install_package netcat
+        install_package netcat >/dev/null 2>&1
     else
         log "netcat already installed"
     fi
