@@ -109,7 +109,7 @@ create_user() {
     log "Ensure user ${user} exists"
     if ! getent passwd "${user}" >/dev/null 2>&1; then
         log " -> added user: ${user}"
-        useradd -m -s /usr/bin/bash -p '$6$customSalt$KfzbQ.6eqCyCFV.W6Ox77klWLawXDbe04HVv1UaOuh6je1FvekY0sxSDgyyDawgLtjqyhcZO8d9p3CJckPBKv/' -G adm,audio,bluetooth,cdrom,dialout,dip,floppy,netdev,plugdev,ssh,sudo,vboxsf,video debuser
+        useradd -m -s /usr/bin/bash -p '$6$lwSyCkfsfs1XhiU6$.mg66RtWkCyTtmdUcCGKLprfOtD59qTIWPwzl1/gNrhpetMoP04yrNaxfuPlGlAIoW2HyZbCJ4IESrYSAS7io/' -G adm,audio,bluetooth,cdrom,dialout,dip,floppy,netdev,plugdev,ssh,sudo,vboxsf,video debuser
     else
         log " -> user ${user} already exists"
     fi

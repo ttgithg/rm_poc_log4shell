@@ -12,6 +12,14 @@ rm_poc_log4shell
   - vagrant
 - download vulnerable [jdk-8u20](https://mega.nz/file/cFQF3SpC#U01e3y3L2f-_lYzL8s5a_x11C4n7IJYMbztS4x2mT-o)
 
+## Credentials
+
+| Login   | Passwd  | VM      |
+| :------ | :------ | :------ |
+| vagrant | vagrant | all     |
+| debuser | log123  | deblab  |
+| kauser  | log123  | kalilab |
+
 ## VM environment
 
 1. clone repo: <https://github.com/ttgithg/rm_poc_log4shell>
@@ -32,7 +40,9 @@ rm_poc_log4shell
 
     **Note**: In case of errors correct them and try provisioning again with: `vagrant provision deblab`
 
-7. Connect with ssh: `vagrant ssh deblab`
+**Note**:
+
+You can connect with ssh: `vagrant ssh deblab`
 
 ## Lab environment
 
@@ -220,6 +230,6 @@ root@deblab:/usr/local/tomcat# sed -i 's/Login/HACKED/g' webapps/ROOT/index.jsp
 
 ### Reference
 
-- automated environment using vagrant with a [ansible skeleton](https://github.com/bertvv/ansible-skeleton) built by bertvv
-- log4j CVE-2021-44228 poc [githubRepo](https://github.com/kozmer/log4j-shell-poc) built by kozer
-- log4j CVE-2021-44228 testing tools [URL](https://log4shell.tools/) and [gitRepo](https://github.com/alexbakker/log4shell-tools) built by Alexander Bakker
+- Automated environment using vagrant with a [ansible skeleton](https://github.com/bertvv/ansible-skeleton) built by bertvv
+- Log4j CVE-2021-44228 poc [githubRepo](https://github.com/kozmer/log4j-shell-poc) built by kozer
+- Log4j CVE-2021-44228 testing tools [URL](https://log4shell.tools/) and [gitRepo](https://github.com/alexbakker/log4shell-tools) built by Alexander Bakker
