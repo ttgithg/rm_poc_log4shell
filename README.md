@@ -10,7 +10,7 @@ rm_poc_log4shell
   - git
   - virtualbox
   - vagrant
-- download vulnerable [jdk-8u20](https://mega.nz/file/cFQF3SpC#U01e3y3L2f-_lYzL8s5a_x11C4n7IJYMbztS4x2mT-o)
+- Download vulnerable [jdk-8u20](https://mega.nz/file/cFQF3SpC#U01e3y3L2f-_lYzL8s5a_x11C4n7IJYMbztS4x2mT-o)
 
 ## Credentials
 
@@ -19,6 +19,10 @@ rm_poc_log4shell
 | vagrant | vagrant | all     |
 | debuser | log123  | deblab  |
 | kauser  | log123  | kalilab |
+
+## Video walkthrough
+
+[![Watch the video](https://i.imgur.com/pXGHUTd.png)](https://youtu.be/nLZ8yn0Lc_E)
 
 ## VM environment
 
