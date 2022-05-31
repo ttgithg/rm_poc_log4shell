@@ -22,7 +22,7 @@ rm_poc_log4shell
 
 ## Video walkthrough
 
-[![Watch the video](https://i.imgur.com/pXGHUTd.png)](https://youtu.be/nLZ8yn0Lc_E)
+[![Watch the video](https://i.imgur.com/wp5n82t.png)](https://youtu.be/nLZ8yn0Lc_E)
 
 ## VM environment
 
